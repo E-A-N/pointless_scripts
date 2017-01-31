@@ -5,7 +5,7 @@ function doubleFun(data){
     //return data.map((x)=>(x+x));
     return data.map(
         function(data) {
-            var val = data === 5 ? "Hey Bitch!": data + data;
+            var val = data === 5 ? "Hey Bruh!": data + data;
             return val;
         }
 )};
