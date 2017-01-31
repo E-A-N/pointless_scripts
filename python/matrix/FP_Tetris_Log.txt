@@ -1,0 +1,12 @@
+Log 1:  At this point in the developement of the game I've only created a matrix and a printing function that renders it to a 2D plane. While meditating an
+algorithm I can use to create data for xy coordinates and collision detection I realized a key difference in object oriented and functional
+programming.  The particular difference is the high level conventional abstractions of a program. Though this is obvious syntactically, when thinking critically about the naming
+conventions and data types I'll be needing to implement tetrominos, I realize just how concrete and more light weight functional programming is.
+Instead of objects with attributes and behaviors, I can just use nested arrays and functions.  One of the strong points of object oriented programming is the
+level of intuitiveness of its high level abstractions.  For example if we were to create a block, it's attributes could be x/y cooridnates, and it's behvavior
+can be flip.
+
+class tetBlock:
+    def __init__(self,x,y):
+        self.x = x
+        self.y = y
