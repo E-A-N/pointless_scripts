@@ -1,44 +1,71 @@
 var banana = {
 
-  contents : 100,
-  edible : false,
-  isPeeled : false,
-  peel : 100,
+    contents : 100,
+    edible   : false,
+    isPeeled : false,
+    peel     : 100,
 
-  peelOff : function(force = 10){
-      if (banana.isPeeled){
+    //setup setters
+    setContents: function(defaultVar = 100){
+        banana.contents = arg;
+    },
+
+    setIsPeeled: function(defaultVar = false){
+        banana.isPeeled = defaultVar || banana.peel == 0;
+    },
+
+    setEdible: function(){
+        banana.edible = banana.contents > banana.peel;
+    },
+
+    setPeelAmount: function(defaultVar = 100){
+        banana.peel = defaultVar;
+    },
+
+    //setup getters
+    getContents: function(){
+        return banana.contents;
+    },
+
+    getIsPeeled: function(){
+        return banana.isPeeled;
+    },
+
+    getEdible: function(){
+        return banana.edible;
+    },
+
+    getPeelAmount: function(){
+        return banana.peel;
+    },
+
+    peelOff : function(force = 10){
+        if (banana.isPeeled){
           console.log("The Banana has been fully peeled!!");
-      }
-      else{
+        }
+        else{
           console.log("You peeled some of the banana!");
           banana.peel -= force;
-      }
-      return;
-  },
+        }
+        return;
+    },
 
-  checkEdible: function(){
-      let edible = banana.contents > banana.peel;
-      return edible
-  },
+    consume : function(bite = 10){
+        var biteAdjust = bite;
 
-  setEdible: function(){
-      banana.edible = banana.checkEdible();
-  },
+        //check to see if there's biting over the peel
+        var biteRoom = banana.content - banana.peel;
+        banana.edible = banana.setEdible();
 
-  consume : function(bite = 10){
-      var biteAdjust = bite;
-      var biteRoom = banana.content - banana.peel;
-      banana.edible = banana.checkEdible();
-
-      if (bite > biteRoom){
+        if (bite > biteRoom){
           bite = biteRoom;
-      }
-      if (banana.edible) {
+        }
+        if (banana.edible) {
           banana.contents -= bite
-      }
-      else{
+        }
+        else{
           console.log("The Peel is in the way!!!");
-      }
-  },
+        }
+    },
 
 };
