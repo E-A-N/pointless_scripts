@@ -8,7 +8,7 @@ function queue(ary){
 
 	for (let x = 0; x < size; x++){
 		destiny[x] = placeHold;
-		placeHold = ary[i];
+		placeHold = ary[x];
 	}
 	return destiny
 }
