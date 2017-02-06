@@ -10,4 +10,13 @@ function bCount(stri,choice){
 }
 
 var ray = "ABCDBBEFG";
-bCount(ray,"B");
+optimal(ray,"B");
+
+function optimal(str,sel){
+
+    let num = str.split()
+        .map((x)=>(x = x === sel ? 1 : 0))
+        .reduce((x,y)=>(x + y));
+
+    return num;
+}
