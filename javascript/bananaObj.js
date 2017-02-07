@@ -7,7 +7,7 @@ var banana = {
 
     //setup setters
     setContents: function(defaultVar = 100){
-        banana.contents = arg;
+        banana.contents = defaultVar;
     },
 
     setIsPeeled: function(defaultVar = false){
