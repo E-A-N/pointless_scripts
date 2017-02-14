@@ -12,5 +12,5 @@ function expo(base,exp,val){
 	return expo(base,exp -1, val * base)
 }
 
-var num = 2;
-expo(num,8,num);
+var nums = [9,3,9];
+expo(...nums);
