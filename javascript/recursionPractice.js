@@ -55,9 +55,9 @@ eanReduce(arr,dub);
     write a recursive function to get the product of 2 numbers
 */
 
-function product(a,b){
+function product(a,b,c=a){
     if (b - 1 > 0){
-        return product(a + a, b-1);
+        return product(a + c, b-1, c);
     }
     else if (b -1 === 0){
         return a;
@@ -66,3 +66,6 @@ function product(a,b){
         return 0;
     }
 }
+
+product(102,5); //510
+product(999999,0) === 0; //True
