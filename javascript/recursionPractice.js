@@ -50,3 +50,19 @@ function eanReduce(arg,highOrder,val=0,iter=0){
 
 var arr = [2,4,6,8];
 eanReduce(arr,dub);
+
+/*
+    write a recursive function to get the product of 2 numbers
+*/
+
+function product(a,b){
+    if (b - 1 > 0){
+        return product(a + a, b-1);
+    }
+    else if (b -1 === 0){
+        return a;
+    }
+    else if (b === 0){
+        return 0;
+    }
+}
