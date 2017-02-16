@@ -14,3 +14,39 @@ function expo(base,exp,val){
 
 var num = 2;
 expo(num,8,num);
+
+
+/*
+    Write a recursive function that doubles the values of a list
+*/
+
+var ray = [2,4,6,8];
+function doubler(arg,iter=0){
+    if (iter < arg.length) {
+        arg[iter] += arg[iter++];
+        return doubler(arg,iter);
+    }
+    else {
+        return arg;
+    }
+}
+doubler(ray);
+
+/*
+    Write a recursive reduce function
+*/
+let dub = function(a,b){
+    return a + b;
+}
+function eanReduce(arg,highOrder,val=0,iter=0){
+    if (iter < arg.length){
+        let newVal = highOrder(val,arg[iter++])
+        return eanReduce(arg,highOrder, newVal,iter);
+    }
+    else {
+        return val;
+    }
+}
+
+var arr = [2,4,6,8];
+eanReduce(arr,dub);
