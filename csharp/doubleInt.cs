@@ -1,12 +1,19 @@
 using System;
-namespace Application {
-	public class EmptyClass {
-		public int doubleInt(int nummy) {
+namespace Application { 
+	
+	public class doubleDub {
+		
+		public int doubler(int nummy){
 			return nummy + nummy;
 		}
-		public static void Main(){
-			int num = doubleInt(30);
-			System.Console.WriteLine("{0}",num);
+
+		static void Main(){
+			int numb = 77;
+			doubleDub z = new doubleDub();
+			int result = z.doubler (numb);
+
+			Console.WriteLine ("double of {0} is {1}", numb, result);
+			Console.ReadLine ();
 		}
 	}
 }
