@@ -14,6 +14,18 @@ class queue {
         return ray;
     }
     
+  //changes array in place (no copies)
+  public static void queInPlace(ref int[] ray, int size){
+        int len = size;
+        int placeHold = ray[len - 1];
+
+        //Use decrementation
+        for (int i = len - 2; i > -1; i--){
+            ray[i + 1] = ray[i];
+        }
+        ray[0] = placeHold;
+    }
+  
     public static void Main (string[] args) {
         queue xVar = new queue();
         
