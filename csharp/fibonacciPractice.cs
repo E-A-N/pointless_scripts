@@ -10,7 +10,6 @@ namespace Application
 
 		public static void main(){
 			Fibonacci fibo = new Fibonacci();
-			
 		}
 	}
 }
