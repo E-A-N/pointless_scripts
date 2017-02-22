@@ -121,3 +121,47 @@ class MainClass {
   }
 }
       
+/*
+    5. Modify the previous program such that only multiples of three or five are considered in the sum, e.g. 3, 5, 6, 9, 10, 12, 15 for n=17
+*/
+
+using System;
+class MainClass {
+  
+  public int getNumber(){
+      
+      Console.WriteLine("Enter a number: ");
+      int num = Convert.ToInt32(Console.ReadLine());
+      
+      num = Convert.ToInt32(num);
+      return num;
+  }
+  
+  public int getSums(int num){
+      int accumulate = 0;
+      for(int i = 0; i < num + 1; ++i){
+          if (i % 3 == 0 || i % 5 == 0){
+              accumulate += i;
+          }
+      }
+      return accumulate;
+  }
+  
+  
+  
+  public static void Main (string[] args) {
+    
+    int number;
+    int totalSums;
+    //Instantiate new class
+    MainClass program = new MainClass();
+    
+    //Collect data
+    number = program.getNumber();
+    totalSums = program.getSums(number);
+    
+  
+    Console.WriteLine (totalSums);
+  }
+}
+      
