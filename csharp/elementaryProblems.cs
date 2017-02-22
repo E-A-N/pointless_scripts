@@ -82,3 +82,42 @@ class MainClass {
     4. Write a program that asks the user for a number n and prints the sum of the numbers 1 to n
 */
 
+using System;
+class MainClass {
+  
+  public int getNumber(){
+      
+      Console.WriteLine("Enter a number: ");
+      int num = Convert.ToInt32(Console.ReadLine());
+      
+      num = Convert.ToInt32(num);
+      return num;
+  }
+  
+  public int getSums(int num){
+      int accumulate = 0;
+      for(int i = 0; i < num + 1; ++i){
+          accumulate += i;
+        
+      }
+      return accumulate;
+  }
+  
+  
+  
+  public static void Main (string[] args) {
+    
+    int number;
+    int totalSums;
+    //Instantiate new class
+    MainClass program = new MainClass();
+    
+    //Collect data
+    number = program.getNumber();
+    totalSums = program.getSums(number);
+    
+  
+    Console.WriteLine (totalSums);
+  }
+}
+      
