@@ -165,3 +165,42 @@ class MainClass {
   }
 }
       
+/*
+  6. Write a program that asks the user for a number n and gives him the possibility to choose between computing the sum and computing the product of 1,…,n.
+*/
+
+
+using System;
+class nameAndNum {
+  
+    //attributes
+    private string name;
+    private int number;
+    
+    //getters
+    private void getName(){
+        string name;
+        Console.WriteLine("Herro Robo, what is your name?: ");
+        name = Console.ReadLine();
+        Console.WriteLine("It\'s nice to meet you, {0}",name);
+        
+        this.name = name;
+    }
+    
+    private void getNumber(){
+        int num;
+        Console.WriteLine("Herro Robo, what is your name?: ");
+        num = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine("It\'s nice to meet you, {0}",num);
+        
+        this.number = num;
+    }
+    
+    public static void Main (string[] args) {
+        nameAndNum app; //initialize program
+        
+        app = new nameAndNum(); //instantiate program
+        app.getName();
+        Console.WriteLine(app.name);
+    }
+}
