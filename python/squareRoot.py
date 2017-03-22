@@ -1,5 +1,7 @@
-def exp(root,rep,sum):
-    if (rep > 0):
-        return root + square(root,rep - 1,root * root)
-    else:
-        return sum
+def exp(root, rep, sum=0):
+  if (sum == 0):
+    sum = root
+  if (rep > 1):
+    return exp(root,rep - 1, sum * root)
+  else:
+    return sum
