@@ -18,13 +18,19 @@ class LinkedList:
             return
 
     def deleteCurrentNode(self):
+            roleFilled = False
             hereNode = self.currentNode
-            prevNode = self.prevNode
-            nextNode = self.nextNode
-            if (nextNo != None):
-                nextNo.prevNode = prev
-            if (prevNo != None):
-                prev.nextNode = nextNode
+            prevNode = self.currentNode.prevNode
+            nextNode = self.currentNode.nextNode
+            if (nextNode != None):
+                nextNode.prevNode = prev
+                hereNode = prevNode #replace the current node
+                roleFilled = True
+            if (prevNode != None):
+                prevNode.nextNode = nextNode
+                if not roleFilled:
+                    hereNode = prevNode
+
 
 
 
@@ -38,7 +44,7 @@ print(ll.currentNode.prevNode.nextNode.prevNode.nextNode.prevNode.name)
 
 
 def runner():
-    dataIn = input("Enter d to deleten\ni to insert\nq to quit")
+    dataIn = input("Enter d to delete\ni to insert\nq to quit\np to display\n$==> ")
     result = 1
     if (dataIn[0].lower() == 'i'):
         node = input("What is the name of the node: ")
@@ -46,10 +52,11 @@ def runner():
     elif (dataIn[0].lower() == 'd'):
         input("Deleting Node...")
         ll.deleteCurrentNode()
-    else:
+    elif (dataIn[0].lower() == 'q'):
         result = 0
+    print("The current node is %s\n\n"%(ll.currentNode.name))
     return result
 
-while True():
+while True:
     if runner() == 0:
         break
