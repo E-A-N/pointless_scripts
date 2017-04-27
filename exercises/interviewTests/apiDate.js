@@ -16,7 +16,7 @@ function formatDate(userDate) {
     
     //adjust format for single digits
     month = month < 10 ? '0' + month : month;
-    day = day < 10 ? '0' + day : day
+    day = day < 10 ? '0' + day : day;
     //Thank you cohersion! <3
     
     //concatentate date components to make result api friendly
