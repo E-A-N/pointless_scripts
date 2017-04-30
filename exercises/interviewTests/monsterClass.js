@@ -19,7 +19,7 @@ Monster.prototype.init = function(name,level,hp,death){
 
 Monster.prototype.hpAdjust = function(adjustment){
     /**
-    *  @param {int} amount: a number of hit points to adjust current instance of monster hp by
+    *  @param {int} adjustment: a number of hit points to adjust current instance of monster hp by
     */
      var cap = 25;
      
@@ -56,7 +56,7 @@ Monster.prototype.checkHp = function(){
 
 function monsterDeath(monster){
     /**
-     * @params {Monster} monster: current instance of monster that is dying
+     * @param {object} monster: current instance of monster that is dying
      */
     var msg =`Oh no, ${monster.name} has fallen!`;
     console.log(msg);
