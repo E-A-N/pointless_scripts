@@ -10,6 +10,7 @@ quad.prototype = function(){
     var init = function(l, w){
         this.length = l;
         this.width = w;
+        setArea();
     };
 
     var setArea = function(){
@@ -22,7 +23,7 @@ quad.prototype = function(){
 
     return {
         init: init,
-        area: getArea,
+        getArea: getArea,
     }
 
 }();
