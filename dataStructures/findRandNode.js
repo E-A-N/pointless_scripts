@@ -15,7 +15,7 @@ var Tree = function(){};
 Tree.prototype.init = function(rootValue){
     this.root = new Node;
     this.root.init(rootValue);
-    this.generateTree(rootValue, 10);
+    this.generateTree(this.root, 3);
 }
 
 Tree.prototype.traverse = function(node, call){
@@ -37,7 +37,7 @@ Tree.prototype.traverse = function(node, call){
 Tree.prototype.generateTree = function(node,depth){
     if (depth > 0){
 
-        var offset = Math.floor(Math.random() * 3) + 1;
+        var offset = Math.floor(Math.random() * 3) + 4;
         node.leftChild = new Node;
         node.leftChild.init();
         node.leftChild.value = node.value - offset;
@@ -45,7 +45,7 @@ Tree.prototype.generateTree = function(node,depth){
 
         node.rightChild = new Node;
         node.rightChild.init();
-        node.rightChild.value = max + offset;
+        node.rightChild.value = node.value + offset;
         this.generateTree(node.rightChild, depth - 1);
     }
     return;
