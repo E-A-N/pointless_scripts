@@ -1,3 +1,4 @@
+/*
 Write a multiply function that returns the product of any amount of arguments
     -examples: 
       multiply(2,3) //returns 6
