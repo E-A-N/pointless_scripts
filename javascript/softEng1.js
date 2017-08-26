@@ -3,6 +3,12 @@
 www.shiftedup.com
 */
 
+const funList = list => {
+    return list.reduce((a,b) =>{
+        return a + b;
+    })
+}
+
 function forList(list){
         var lisLength = list.length;
         var sum = 0;

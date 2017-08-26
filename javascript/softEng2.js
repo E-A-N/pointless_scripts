@@ -19,3 +19,8 @@ function comboList(ray1,ray2){
         return -1;
     }
 }
+
+const dualList = (l1,l2) => {
+    let newRay = [];
+    let equal = l1.length === l2.length;
+}
