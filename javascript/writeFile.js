@@ -2,8 +2,8 @@ const fs = require('fs');
 const fileName = './writeTEST.js';
 
 var ray = ['not','once','twice','three times!!'];
-var choice
-var msg = `console.log("Our love is ${numb} as large!")`;
+var choice = Math.floor(Math.random(ray.length));
+var msg = `console.log("Our love is ${ray[choice]} as large!")`;
 
 
 fs.writeFile(fileName, msg, 'utf8', (arg) => {
