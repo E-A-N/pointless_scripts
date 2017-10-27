@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+
+<body>
+    <div id='gh'>
+        Herro Robo! :D
+    </div>
+
+</body>
+
+
+  <script>
+      console.log("Herro Robo!! <3");
+
+      const div = document.getElementById('gh');
+      //Address to Social Shape Interspace
+      const socAddress = 'https://socialshapeinterspace.github.io/demo/client/index.html';
+      const gameWindow = (name, address) => {
+
+          let iFrame = document.createElement('iframe');
+          iFrame.src = address;
+          iFrame.name = name || 'Social Shape Interspace!';
+          iFrame.width = 500;
+          iFrame.height = 500;
+          console.log(iFrame);
+          return iFrame;
+      }
+
+
+      div.innerHTML += '</br>';
+      div.appendChild(gameWindow( null, socAddress));
+  </script>
+</html>
