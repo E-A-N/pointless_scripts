@@ -9,9 +9,9 @@ net.onreadystatechange = (noArgs) =>{
     const ready = net.readyState === 4;
     if (ready){
         console.log("I'm ready coach!!");
-        // const header = net.getResponseHeader();
-        // console.log(header);
-        // console.log(net.response);
+        const header = net.getResponseHeader();
+        console.log(header);
+        console.log(net.response);
         response = JSON.parse(net.responseText);
         console.log(response);
     }
