@@ -1,4 +1,9 @@
-setupText(context, textData){
+const canvas = document.getElementById("c");
+let ctx = canvas.getContext("2d")
+
+ctx.strokeText("Herro Robo!", 50, 50);
+
+const setupText = (context, textData) => {
         //iterate through data and apply formatted text to textMsg
         let textMsg
         textData.args.forEach( (format, index) => {
@@ -15,4 +20,18 @@ setupText(context, textData){
         context.fillText(...textRender);
 
         return context;
-    };
+};
+
+var data = {
+    strokeStyle: "black",
+    fillStyle: "white",
+    lineWidth: 8,
+    font: "900 36px Arial",
+    textAlign: "right",
+    x: 500,
+    y: 250,
+    text: "Herro Robo, dis is a test!! <3 %1%2...%3",
+    args: ["Uno", "Dos", "Thres!!"],
+}
+
+ctx = setupText(ctx,data);
