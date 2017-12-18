@@ -1,33 +1,30 @@
 const canvas = document.getElementById("c");
-let ctx = canvas.getContext("2d")
+const setupText = (canvas, data) => {
+        const context = canvas.getContext("2d");
 
-//ctx.strokeText("Herro Robo!", 50, 50);
-//ctx.fillText("Herro Robo!", 50, 50);
-
-const setupText = (context, textData) => {
-        console.log(textData);
         //iterate through data and apply formatted text to textMsg
         let textMsg
-        textData.args.forEach( (format, index) => {
-            textMsg = textData.text.replace( `%${index + 1}`, format);
+        data.args.forEach( (format, index) => {
+            textMsg = data.text.replace( `%${index + 1}`, format);
         });
 
         //Handle styling
-        context.strokeStyle = textData.strokeStyle;
-        context.fillStyle = textData.fillStyle;
-        context.lineWidth = textData.lineWidth;
+        context.strokeStyle = data.strokeStyle;
+        context.fillStyle = data.fillStyle;
+        context.lineWidth = data.lineWidth;
 
-        const textRender = [textMsg, textData.x, textData.y];
-        if (textData.stroked) context.strokeText(...textRender);
+        const textRender = [textMsg, data.x, data.y];
+        if (data.stroked) context.strokeText(...textRender);
         context.fillText(...textRender);
 
         //return context;
 };
 
-var data = {
+const pJson = {
     strokeStyle: "black",
+    stroked: true,
     fillStyle: "white",
-    lineWidth: 8,
+    lineWidth: 3,
     font: "900 36px Arial",
     textAlign: "right",
     x: 75,
@@ -37,4 +34,4 @@ var data = {
 }
 
 console.log("body loaded!! <3")
-setupText(ctx,data);
+const ctx = setupText(canvas, pJson);
