@@ -43,20 +43,20 @@ const renderImage = (canvas, data) => {
         data.imageInfo.subHeight,
     ];
 
-    const profileArgs = [
-        data.playerInfo.playerImage,
-        data.playerInfo.dx,
-        data.playerInfo.dy,
-        data.playerInfo.playerImage.width,
-        data.playerInfo.playerImage.height,
-        data.playerInfo.playerImage.subX,
-        data.playerInfo.playerImage.subY,
-        data.playerInfo.playerImage.subWidth,
-        data.playerInfo.playerImage.subHeight,
-    ];
+    // const profileArgs = [
+    //     data.playerInfo.playerImage,
+    //     data.playerInfo.dx,
+    //     data.playerInfo.dy,
+    //     data.playerInfo.playerImage.width,
+    //     data.playerInfo.playerImage.height,
+    //     data.playerInfo.playerImage.subX,
+    //     data.playerInfo.playerImage.subY,
+    //     data.playerInfo.playerImage.subWidth,
+    //     data.playerInfo.playerImage.subHeight,
+    // ];
 
     context.drawImage(...backgroundArgs);
-    context.drawImage(...profileArgs);
+    //context.drawImage(...profileArgs);
     return context;
 }
 
@@ -72,7 +72,7 @@ const pJson = {
     text: "Can you beat my score?",
     score: 9999999,
     imageInfo : {
-        src: "assets/folder/location.png", //TODO: test a real image location
+        src: "canvasStuff.jpg", //TODO: test a real image location
         dx: 0,
         dy: 0,
         destinationWidth: 250,
@@ -87,10 +87,14 @@ const pJson = {
         id: 1363528553768175,
         userFriends: [{id: 0, name: "Friends Name!!", photoURL:"www.imgloc.com"}], //array of objects
         score: 0,
-        playerImage: {width: 400, height: 400}, //image that's apart of the DOM
+        playerImage: {
+            width: 400,
+            height: 400}, //image that's apart of the DOM
         url: "www.imagelocation.com", //url location of image
     },
 }
 
 console.log("body loaded!! <3")
+
+const imgCtx = renderImage(canvas, pJson);
 const ctx = renderText(canvas, pJson);
