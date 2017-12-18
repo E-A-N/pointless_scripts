@@ -72,7 +72,8 @@ const pJson = {
     text: "Can you beat my score?",
     score: 9999999,
     imageInfo : {
-        src: "canvasStuff.jpg", //TODO: test a real image location
+        //src: "canvasStuff.jpg", //TODO: test a real image location
+        src: "https://orig00.deviantart.net/debc/f/2016/153/3/5/cyber_city_pixelart_by_kainuart-da4q0ds.png",
         dx: 0,
         dy: 0,
         destinationWidth: 250,
