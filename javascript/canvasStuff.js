@@ -71,6 +71,19 @@ const pJson = {
     y: 75,
     text: "Can you beat my score?",
     score: 9999999,
+    fbInfo: {
+        update: {
+            action: 'CUSTOM',
+            template: "beat_my_score",
+            cta: "Play Dragonz Rising",
+            strategy: "IMMEDIATE",
+            notification: "NO_PUSH",
+        },
+        share: {
+            intent: "REQUEST",
+            text: "Can you beat my score?",
+        },
+    },
     imageInfo : {
         //src: "canvasStuff.jpg", //TODO: test a real image location
         src: "https://www.welivesecurity.com/wp-content/uploads/2017/10/cybersecurity_month-1-623x432.jpg",
