@@ -61,16 +61,18 @@ const renderImage = (canvas, data) => {
 }
 
 const pJson = {
-    strokeStyle: "black",
-    stroked: true,
-    fillStyle: "white",
-    lineWidth: 4,
-    fontProperties: ["normal", "24px", "Arial"], //keep this order
-    textAlign: "right",
-    x: 275,
-    y: 75,
-    text: "Can you beat my score?",
-    score: 9999999,
+    textInfo: {
+        strokeStyle: "black",
+        stroked: true,
+        fillStyle: "white",
+        lineWidth: 4,
+        fontProperties: ["normal", "24px", "Arial"], //keep this order
+        textAlign: "right",
+        x: 275,
+        y: 75,
+        text: "Can you beat my score?",
+        score: 9999999,
+    },
     fbInfo: {
         update: {
             action: 'CUSTOM',
