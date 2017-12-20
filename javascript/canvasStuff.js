@@ -1,9 +1,10 @@
 const canvas = document.getElementById("c");
 const renderText = (canvas, data) => {
     const context = canvas.getContext("2d");
+    const text = data.isScore ? parseInt(data.text).toLocaleString() : data.text;
     const concatStyles = (combination , style) => (combination += ` ${style}`);
     const textStyles = data.fontProperties.reduce(concatStyles);
-
+    console.log(data.isScore);
     //Handle styling
     context.font = textStyles;
     context.strokeStyle = data.strokeStyle;
@@ -11,14 +12,9 @@ const renderText = (canvas, data) => {
     context.lineWidth = data.lineWidth;
     context.textAlign = data.textAlign;
 
-    const textRender = [data.text, data.x, data.y];
+    const textRender = [text, data.x, data.y];
     if (data.stroked) context.strokeText(...textRender);
     context.fillText(...textRender);
-
-    const score = data.score.toLocaleString();
-    const scoreRender = [score, data.x, data.y + 30];
-    if (data.stroked) context.strokeText(...scoreRender);
-    context.fillText(...scoreRender);
 
     return context;
 };
@@ -27,36 +23,39 @@ const renderImage = (canvas, data) => {
     const context = canvas.getContext("2d");
     const img = new Image();
 
-    img.src = data.imageInfo.src;
-    //img.onload = renderImage;
+    console.log(data);
+    let imgArgs;
+    if (data.type === "imageInfo") {
+        img.src = data.src;
+        imgArgs = [
+            img,
+            data.x,
+            data.y,
+            data.width,
+            data.height,
+            data.subX,
+            data.subY,
+            data.subWidth,
+            data.subHeight,
+        ];
+    }
+    else {
+        img.src = data.playerImage.src
+        imgArgs = [
+            img,
+            data.playerImage.x,
+            data.playerImage.y,
+            data.playerImage.width,
+            data.playerImage.height,
+            data.playerImage.subX,
+            data.playerImage.subY,
+            data.playerImage.subWidth,
+            data.playerImage.subHeight,
+        ];
+    }
 
-    //background image
-    const backgroundArgs = [
-        img,
-        data.imageInfo.dx,
-        data.imageInfo.dy,
-        data.imageInfo.destinationWidth,
-        data.imageInfo.destinationHeight,
-        data.imageInfo.subX,
-        data.imageInfo.subY,
-        data.imageInfo.subWidth,
-        data.imageInfo.subHeight,
-    ];
-
-    // const profileArgs = [
-    //     data.playerInfo.playerImage,
-    //     data.playerInfo.dx,
-    //     data.playerInfo.dy,
-    //     data.playerInfo.playerImage.width,
-    //     data.playerInfo.playerImage.height,
-    //     data.playerInfo.playerImage.subX,
-    //     data.playerInfo.playerImage.subY,
-    //     data.playerInfo.playerImage.subWidth,
-    //     data.playerInfo.playerImage.subHeight,
-    // ];
-
-    context.drawImage(...backgroundArgs);
-    //context.drawImage(...profileArgs);
+    //draw asynchrously
+    img.onload = () => {context.drawImage(...imgArgs)};
     return context;
 }
 
@@ -67,7 +66,7 @@ const model = {
             template: 'beat_my_score',
             cta: 'Play Dragonz Rising',
             strategy: 'IMMEDIATE',
-            notification: 'NO_PUSH'
+            notification: 'NO_PUSH',
        },
        share: {
             intent: 'REQUEST',
@@ -76,26 +75,41 @@ const model = {
     },
     data: [
         {type: 'playerInfo',
-            playerImage: [Object],
+            playerImage: {
+                src: "samuraiJack.jpg",
+                x: 0,
+                y: 0,
+                width: 400,
+                height: 269,
+                subX: 100,
+                subY: 0,
+                subWidth: 100,
+                subHeight: 100,
+            },
             url: 'www.imagelocation.com'
         },
         {type: 'imageInfo',
-            src: 'imagelocation.com',
-            dx: 0,
-            dy: 0,
-            destinationWidth: 250,
-            destinationHeight: 250,
+            //src: "samuraiJack.jpg",
+            src: 'https://lh3.googleusercontent.com/lLuGGvsk-c5ZoKZudOk4hfC3fYgj9VAEVTZx3CRfg5GDQzu-5Augh_Yo9_991NBKAho',
+            x: 0,
+            y: 0,
+            width: 512,
+            height: 512,
             subX: 0,
             subY: 0,
-            subWidth: 250,
-            subHeight: 250
+            subWidth: 100,
+            subHeight: 100,
         },
         {type: 'textInfo',
             strokeStyle: 'black',
             stroked: true,
             fillStyle: 'white',
             lineWidth: 4,
-            fontProperties: [Array],
+            fontProperties: [
+                "normal",
+                "24px",
+                "Arial",
+            ],
             textAlign: 'right',
             x: 275,
             y: 75,
@@ -104,16 +118,31 @@ const model = {
         {type: 'textInfo',
             strokeStyle: 'black',
             stroked: true,
+            isScore: true,
             fillStyle: 'white',
             lineWidth: 4,
-            fontProperties: [Array],
+            fontProperties: [
+                "normal",
+                "24px",
+                "Arial",
+            ],
             textAlign: 'right',
             x: 275,
             y: 75,
             text: '9999999'
         },
-        { type: 'playerInfo',
-           playerImage: [Object],
+        {type: 'playerInfo',
+            playerImage: {
+                src: "samuraiJack.jpg",
+                x: 0,
+                y: 0,
+                width: 400,
+                height: 269,
+                subX: 100,
+                subY: 0,
+                subWidth: 100,
+                subHeight: 100,
+            },
            url: 'www.imagelocation.com'
         }
     ]
@@ -123,5 +152,5 @@ const model = {
 
 console.log("body loaded!! <3")
 
-const imgCtx = renderImage(canvas, model);
-const ctx = renderText(canvas, model);
+//const imgCtx = renderImage(canvas, model.data[1]);
+const ctx = renderText(canvas, model.data[3]);
