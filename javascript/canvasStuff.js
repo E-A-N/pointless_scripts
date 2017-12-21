@@ -1,64 +1,3 @@
-const canvas = document.getElementById("c");
-const renderText = (canvas, data) => {
-    const context = canvas.getContext("2d");
-    const text = data.isScore ? parseInt(data.text).toLocaleString() : data.text;
-    const concatStyles = (combination , style) => (combination += ` ${style}`);
-    const textStyles = data.fontProperties.reduce(concatStyles);
-    console.log(data.isScore);
-    //Handle styling
-    context.font = textStyles;
-    context.strokeStyle = data.strokeStyle;
-    context.fillStyle = data.fillStyle;
-    context.lineWidth = data.lineWidth;
-    context.textAlign = data.textAlign;
-
-    const textRender = [text, data.x, data.y];
-    if (data.stroked) context.strokeText(...textRender);
-    context.fillText(...textRender);
-
-    return context;
-};
-
-const renderImage = (canvas, data) => {
-    const context = canvas.getContext("2d");
-    const img = new Image();
-
-    console.log(data);
-    let imgArgs;
-    if (data.type === "imageInfo") {
-        img.src = data.src;
-        imgArgs = [
-            img,
-            data.x,
-            data.y,
-            data.width,
-            data.height,
-            data.subX,
-            data.subY,
-            data.subWidth,
-            data.subHeight,
-        ];
-    }
-    else {
-        img.src = data.playerImage.src
-        imgArgs = [
-            img,
-            data.playerImage.x,
-            data.playerImage.y,
-            data.playerImage.width,
-            data.playerImage.height,
-            data.playerImage.subX,
-            data.playerImage.subY,
-            data.playerImage.subWidth,
-            data.playerImage.subHeight,
-        ];
-    }
-
-    //draw asynchrously
-    img.onload = () => {context.drawImage(...imgArgs)};
-    return context;
-}
-
 const model = {
     fbInfo: {
         update: {
@@ -76,7 +15,7 @@ const model = {
     data: [
         {type: 'playerInfo',
             playerImage: {
-                src: "samuraiJack.jpg",
+                src: "https://vignette.wikia.nocookie.net/samuraijack/images/7/76/Samurai_Jack_Season_5_Trailer_Samurai_Jack_Adult_Swim/revision/latest/scale-to-width-down/600?cb=20170206193349",
                 x: 0,
                 y: 0,
                 width: 400,
@@ -133,7 +72,7 @@ const model = {
         },
         {type: 'playerInfo',
             playerImage: {
-                src: "samuraiJack.jpg",
+                src: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Firefox_Logo%2C_2017.svg/2000px-Firefox_Logo%2C_2017.svg.png",
                 x: 0,
                 y: 0,
                 width: 400,
@@ -148,9 +87,94 @@ const model = {
     ]
 }
 
+const canvas = document.getElementById("c");
+const renderText = (canvas, data, call) => {
+    const context = canvas.getContext("2d");
+    const text = data.isScore ? parseInt(data.text).toLocaleString() : data.text;
+    const concatStyles = (combination , style) => (combination += ` ${style}`);
+    const textStyles = data.fontProperties.reduce(concatStyles);
+    //Handle styling
+    context.font = textStyles;
+    context.strokeStyle = data.strokeStyle;
+    context.fillStyle = data.fillStyle;
+    context.lineWidth = data.lineWidth;
+    context.textAlign = data.textAlign;
 
+    const textRender = [text, data.x, data.y];
+    if (data.stroked) context.strokeText(...textRender);
+    context.fillText(...textRender);
+    call();
 
-console.log("body loaded!! <3")
+    return context;
+};
 
-//const imgCtx = renderImage(canvas, model.data[1]);
-const ctx = renderText(canvas, model.data[3]);
+const renderImage = (canvas, data, call) => {
+    const context = canvas.getContext("2d");
+    const img = new Image();
+    img.crossOrigin = "Anonymous";
+
+    let imgArgs;
+    if (data.type === "imageInfo") {
+        img.src = data.src;
+        imgArgs = [
+            img,
+            data.x,
+            data.y,
+            data.width,
+            data.height,
+            data.subX,
+            data.subY,
+            data.subWidth,
+            data.subHeight,
+        ];
+    }
+    else {
+        img.src = data.playerImage.src
+        imgArgs = [
+            img,
+            data.playerImage.x,
+            data.playerImage.y,
+            data.playerImage.width,
+            data.playerImage.height,
+            data.playerImage.subX,
+            data.playerImage.subY,
+            data.playerImage.subWidth,
+            data.playerImage.subHeight,
+        ];
+    }
+
+    //draw asynchrously
+    img.onload = () => {
+      context.drawImage(...imgArgs);
+      call();
+    };
+    return context;
+}
+
+let loadProgress = 0;
+const graphicLoader = () => {
+    const loadSize = model.data.length - 1;
+    if (loadProgress >= loadSize){
+        console.log("Graphics are all loaded up!");
+        console.log(canvas.toDataURL());
+    }
+    else {
+      loadProgress++;
+      const totalProgress = Math.floor((loadProgress/loadSize)*100);
+      console.log(`Canvas Image is ${totalProgress}% loaded`);
+    }
+}
+
+const main = (canvas, data, call) => {
+    data.forEach( (x) => {
+
+        if (x.type === "textInfo"){
+            renderText(canvas, x, call);
+        }
+        else {
+            renderImage(canvas, x, call);
+        }
+    });
+}
+
+main(canvas, model.data, graphicLoader);
