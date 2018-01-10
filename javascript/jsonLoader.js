@@ -6,8 +6,9 @@ const loadJSON = (url, call) => {
         const fileReady = file.readyState === 4 && file.state === "200";
         if (fileReady) call(file.responseText);
         const body = document.getElementsByTagName("BODY")[0];
-        body.innerHTML = file.responseText;
-        frosty = JSON.parse(file.responseText);
+        body.innerHTML += "<br>" + file.responseText;
+        frosty = file.responseText.replace(" ","");
+        //frosty = JSON.parse(frosty);
     }
     file.send(null);
 
