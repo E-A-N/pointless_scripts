@@ -1,3 +1,4 @@
+//found on https://repl.it/repls/MarvelousSlipperyInitialization
 var board = [5,3,8,9,8,6,767,678,99,354534,555,777];
 //in order to display relative placing the player position and current leaderboard is needed
 
