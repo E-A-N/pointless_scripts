@@ -24,8 +24,8 @@ aerialNormals = [
     "j.h",
     "j.d"
 ]
-
-groundSpecials = {
+specialMoveList = ["carcass raid", "stinger aim", "dhm", "ball summon", "mad struggle"]
+specialMoveData = {
     "carcass raid": {
         "buttons": ["s", "h", "d"],
         "aerial": False,
@@ -41,13 +41,19 @@ groundSpecials = {
         "aerial": False,
         "variation": ["default", "forcebreak"]
     },
-    "ball summon":{}
+    "ball summon":{
+        "buttons": ["p", "k", "s", "h", "d"],
+        "aerial": True,
+        "variation": ["default", "forcebreak"]
+    },
+    "mad struggle":{
+        "buttons": ["s", "h", "d"],
+        "aerial": True,
+        "variation": ["default", "tigerknee", "forcebreak"]
+    },
 }
-
-aerialSpecials = [
-    "madstruggle",
-    "ball summon"
-]
+for i in specialMoveList:
+    print(specialMoveData[i])
 
 def randomizeSpecial(specials, btnInputs):
     btnNumber = random.randint(0, len(btnInputs) - 1)
