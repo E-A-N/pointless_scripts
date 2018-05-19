@@ -25,12 +25,24 @@ aerialNormals = [
     "j.d"
 ]
 
-groundSpecials = [
-    "carcass raid",
-    "stinger aim",
-    "dhm",
-    "ball summon"
-]
+groundSpecials = {
+    "carcass raid": {
+        "buttons": ["s", "h", "d"],
+        "aerial": False,
+        "variation": ["default", "charged lvl1", "charged lvl2", "forcebreak"]
+    },
+    "stinger aim":{
+        "buttons": ["s", "h", "d"],
+        "aerial": False,
+        "variation": ["default", "charged lvl1", "charged lvl2", "forcebreak"]
+    },
+    "dhm":{
+        "buttons": ["s", "h", "d"],
+        "aerial": False,
+        "variation": ["default", "forcebreak"]
+    },
+    "ball summon":{}
+}
 
 aerialSpecials = [
     "madstruggle",
@@ -46,4 +58,4 @@ def randomizeSpecial(specials, btnInputs):
     createdSpecialMove = btnChoice + " " + specialChoice
     return createdSpecialMove
 
-print(randomizeSpecial(groundSpecials, groundNormals))
+#print(randomizeSpecial(groundSpecials, groundNormals))
