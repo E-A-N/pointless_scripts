@@ -1,3 +1,5 @@
+import random
+
 groundNormals = [
     "5p",
     "2p",
@@ -26,12 +28,22 @@ aerialNormals = [
 groundSpecials = [
     "carcass raid",
     "stinger aim",
-    "tk madstruggle",
-    "dhm"
-    "ball"
+    "dhm",
+    "ball summon"
 ]
 
 aerialSpecials = [
     "madstruggle",
-    "ball"
+    "ball summon"
 ]
+
+def randomizeSpecial(specials, btnInputs):
+    btnNumber = random.randint(0, len(btnInputs) - 1)
+    specialNumber = random.randint(0, len(specials) - 1)
+    btnChoice = btnInputs[btnNumber]
+    specialChoice = specials[specialNumber]
+
+    createdSpecialMove = btnChoice + " " + specialChoice
+    return createdSpecialMove
+
+print(randomizeSpecial(groundSpecials, groundNormals))

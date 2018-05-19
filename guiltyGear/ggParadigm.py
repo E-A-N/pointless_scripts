@@ -1,7 +1,7 @@
 import random
 import okizemeGenerator
+import moveData as moves
 
-sNormals = ["2k","2p","5k","2d"]
 shimmies = "Shimmy with" + str(random.randint(0, len(sNormals)))
 
 ttNormals = []
