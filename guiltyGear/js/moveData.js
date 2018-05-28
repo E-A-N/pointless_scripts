@@ -24,44 +24,47 @@ aerialNormals = [
     "j.d"
 ];
 specialMoveList = ["carcass raid", "stinger aim", "dhm", "ball summon", "mad struggle"]
-specialMoveData = [
-    {
-        "name": "carcass raid",
-        "buttons": ["s", "h", "d"],
-        "aerial": false,
-        "variation": ["default", "charged lvl1", "charged lvl2", "forcebreak"]
-    },
-    {
-        "name": "stinger aim",
-        "buttons": ["s", "h", "d"],
-        "aerial": false,
-        "variation": ["default", "charged lvl1", "charged lvl2", "forcebreak"]
-    },
-    {
-        "name": "dhm",
-        "buttons": ["s", "h", "d"],
-        "aerial": false,
-        "variation": ["default", "forcebreak"]
-    },
-    {
-        "name": "ball summon",
-        "buttons": ["p", "k", "s", "h", "d"],
-        "aerial": true,
-        "variation": ["default", "forcebreak"]
-    },
-    {
-        "name": "mad struggle",
-        "buttons": ["s", "h", "d"],
-        "aerial": true,
-        "variation": ["default", "tigerknee", "forcebreak"]
-    },
-];
+specialMoveData = {
+    "name": "specials moves",
+    "data": [
+        {
+            "name": "carcass raid",
+            "buttons": ["s", "h", "d"],
+            "aerial": false,
+            "variation": ["default", "charged lvl1", "charged lvl2", "forcebreak"]
+        },
+        {
+            "name": "stinger aim",
+            "buttons": ["s", "h", "d"],
+            "aerial": false,
+            "variation": ["default", "charged lvl1", "charged lvl2", "forcebreak"]
+        },
+        {
+            "name": "dhm",
+            "buttons": ["s", "h", "d"],
+            "aerial": false,
+            "variation": ["default", "forcebreak"]
+        },
+        {
+            "name": "ball summon",
+            "buttons": ["p", "k", "s", "h", "d"],
+            "aerial": true,
+            "variation": ["default", "forcebreak"]
+        },
+        {
+            "name": "mad struggle",
+            "buttons": ["s", "h", "d"],
+            "aerial": true,
+            "variation": ["default", "tigerknee", "forcebreak"]
+        },
+    ]
+}
 
-for (var i = 0; i < specialMoveData.length; i++){
-    var item = specialMoveData[i].name;
+for (var i = 0; i < specialMoveData.data.length; i++){
+    var item = specialMoveData.data[i].name;
     console.log("Item is: ",item);
 }
-//const createSpecialMoveContext = (special) => {};
+const createSpecialMoveContext = (special) => {};
 
 
 const randomizeSpecial = (specials, btnInputs) => {
