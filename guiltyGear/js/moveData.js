@@ -1,4 +1,3 @@
-import random
 
 groundNormals = [
     "5p",
@@ -15,7 +14,7 @@ groundNormals = [
     "6h",
     "5d",
     "2d"
-]
+];
 
 aerialNormals = [
     "j.p",
@@ -23,7 +22,7 @@ aerialNormals = [
     "j.s",
     "j.h",
     "j.d"
-]
+];
 specialMoveList = ["carcass raid", "stinger aim", "dhm", "ball summon", "mad struggle"]
 specialMoveData = {
     "carcass raid": {
@@ -52,16 +51,21 @@ specialMoveData = {
         "variation": ["default", "tigerknee", "forcebreak"]
     },
 }
-for i in specialMoveList:
-    print(specialMoveData[i])
 
-def randomizeSpecial(specials, btnInputs):
-    btnNumber = random.randint(0, len(btnInputs) - 1)
-    specialNumber = random.randint(0, len(specials) - 1)
-    btnChoice = btnInputs[btnNumber]
-    specialChoice = specials[specialNumber]
+for (var = 0; i < specialMoveList.length; i++){:
+    console.log(specialMoveData[i])
+}
+const createSpecialMoveContext = (special) => {};
 
-    createdSpecialMove = btnChoice + " " + specialChoice
+
+const randomizeSpecial = (specials, btnInputs) => {
+    var btnNumber = random.randint(0, len(btnInputs) - 1)
+    var specialNumber = random.randint(0, len(specials) - 1)
+    var btnChoice = btnInputs[btnNumber]
+    var specialChoice = specials[specialNumber]
+
+    var createdSpecialMove = btnChoice + " " + specialChoice;
     return createdSpecialMove
+};
 
-#print(randomizeSpecial(groundSpecials, groundNormals))
+console.log(randomizeSpecial(specialMoveList, groundNormals));
