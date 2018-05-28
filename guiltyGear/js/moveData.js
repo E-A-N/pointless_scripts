@@ -24,48 +24,54 @@ aerialNormals = [
     "j.d"
 ];
 specialMoveList = ["carcass raid", "stinger aim", "dhm", "ball summon", "mad struggle"]
-specialMoveData = {
-    "carcass raid": {
+specialMoveData = [
+    {
+        "name": "carcass raid",
         "buttons": ["s", "h", "d"],
-        "aerial": False,
+        "aerial": false,
         "variation": ["default", "charged lvl1", "charged lvl2", "forcebreak"]
     },
-    "stinger aim":{
+    {
+        "name": "stinger aim",
         "buttons": ["s", "h", "d"],
-        "aerial": False,
+        "aerial": false,
         "variation": ["default", "charged lvl1", "charged lvl2", "forcebreak"]
     },
-    "dhm":{
+    {
+        "name": "dhm",
         "buttons": ["s", "h", "d"],
-        "aerial": False,
+        "aerial": false,
         "variation": ["default", "forcebreak"]
     },
-    "ball summon":{
+    {
+        "name": "ball summon",
         "buttons": ["p", "k", "s", "h", "d"],
-        "aerial": True,
+        "aerial": true,
         "variation": ["default", "forcebreak"]
     },
-    "mad struggle":{
+    {
+        "name": "mad struggle",
         "buttons": ["s", "h", "d"],
-        "aerial": True,
+        "aerial": true,
         "variation": ["default", "tigerknee", "forcebreak"]
     },
-}
+];
 
-for (var = 0; i < specialMoveList.length; i++){:
-    console.log(specialMoveData[i])
+for (var i = 0; i < specialMoveData.length; i++){
+    var item = specialMoveData[i].name;
+    console.log("Item is: ",item);
 }
-const createSpecialMoveContext = (special) => {};
+//const createSpecialMoveContext = (special) => {};
 
 
 const randomizeSpecial = (specials, btnInputs) => {
-    var btnNumber = random.randint(0, len(btnInputs) - 1)
-    var specialNumber = random.randint(0, len(specials) - 1)
-    var btnChoice = btnInputs[btnNumber]
-    var specialChoice = specials[specialNumber]
+    const btnNumber     = Math.floor(Math.random() * btnInputs.length);
+    const specialNumber = Math.floor(Math.random() * specials.length);
+    const btnChoice     = btnInputs[btnNumber]
+    const specialChoice = specials[specialNumber]
 
-    var createdSpecialMove = btnChoice + " " + specialChoice;
+    const createdSpecialMove = `${btnChoice} ${specialChoice}`;
     return createdSpecialMove
 };
 
-console.log(randomizeSpecial(specialMoveList, groundNormals));
+//console.log(randomizeSpecial(specialMoveList, groundNormals));
