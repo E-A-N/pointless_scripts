@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+
+
+<body>
+    <h1 id="c1"> C1 </h1>
+    <h2 id="c2"> C2 </h2>
+    <h3 id="c3"> C3 </h3>
+
+
+
+    <script>
+        Array.prototype.eanShuffle = function(){
+            let currentIndex = 0;
+            let temporaryValue = 0;
+            let randomIndex = 0;
+            for (i = 1; i < this.length; i++) {
+                randomIndex = Math.floor(Math.random() * i - 1);
+                temporaryValue = this[i - 1];
+                this[i - 1] = this[randomIndex]
+                this[randomIndex] = temporaryValue;
+            }
+        }
+        const c1 = document.getElementById("c1");
+        const c2 = document.getElementById("c2");
+        const c3 = document.getElementById("c3");
+
+        const makeWordContainer = (text) => {
+            let colorArray = ["red", "blue", "yellow", "green", "purple", "white", "none"];
+            colorArray.eanShuffle();
+            let currentColor = 0;
+            let word = document.createElement("span")
+
+            for (let letter = 0; letter < text.length -1; letter++){
+                highlightLetter = text[letter];
+                let highlight = document.createElement("span");
+                highlight.innerHTML = highlightLetter;
+                highlight.style.backgroundColor = colorArray[currentColor];
+                word.appendChild(highlight)
+
+                currentColor = currentColor < colorArray.length - 1 ? ++currentColor : 0; 
+
+            }
+            
+            return word;
+        }
+
+        c1.appendChild(makeWordContainer("Ean Moore!"));
+        c2.appendChild(makeWordContainer("Is the best!"));
+        c3.appendChild(makeWordContainer("Ever!"))
+    </script>
+</body>
+</html>
